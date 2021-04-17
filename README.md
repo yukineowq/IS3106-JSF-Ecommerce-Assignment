@@ -22,4 +22,4 @@ This ecommerce web application is built using **Java Enterprise Edition (J2EE)**
 6) View all sales transaction (after shopping cart is checked out)
 
 
-Note: As this module focuses on frontend development, most of the backend system (ie entity, EJB session beans) was provided and used AS-IS. To build the ecommerce application, I modified the customer and sales transaction session bean classes for the use cases accordingly.
+Note: As this module focuses on frontend development, most of the backend system (ie. entity, EJB session beans) was provided and used AS-IS. To build the ecommerce application, I modified the customer and sales transaction session bean classes for the use cases accordingly.
