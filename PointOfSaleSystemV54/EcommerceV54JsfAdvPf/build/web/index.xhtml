@@ -1,0 +1,85 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:f="http://xmlns.jcp.org/jsf/core"
+                template="/template/defaultTemplate.xhtml"
+                xmlns:ez="http://xmlns.jcp.org/jsf/composite/ezcomp"
+                xmlns:p="http://primefaces.org/ui">
+
+    <ui:define name="content">
+
+
+        <h:panelGroup rendered="#{sessionScope.isLogin == false}">
+            <h:form>
+                <p> Welcome to Ecommerce V54, click <p:commandLink value="here" onclick="PF('dialogRegisterCustomer').show();"/> to register. </p>
+            </h:form>
+        </h:panelGroup>
+
+        <h:form id="formRegisterCustomer">
+            <p:dialog id="registerCustomer" widgetVar="dialogRegisterCustomer" header="Fill in the fields below to register" closable="true">
+
+                <p:panelGrid styleClass="formTable">
+                    <p:row>
+                        <p:column>
+                            <p:outputLabel for="firstName" value="First Name: " style="font-weight: bold" />                            
+                        </p:column>
+                        <p:column>
+                            <p:inputText id="firstName" value="#{customerManagementManagedBean.customer.firstName}" required="true" requiredMessage="Please enter your first name" />
+                        </p:column>
+                        <p:column>
+                            <p:message for="firstName"/>
+                        </p:column>
+                    </p:row>
+
+                    <p:row>
+                        <p:column>
+                            <p:outputLabel for="lastName" value="Last Name: " style="font-weight: bold" />                            
+                        </p:column>
+                        <p:column>
+                            <p:inputText id="lastName" value="#{customerManagementManagedBean.customer.lastName}" required="true" requiredMessage="Please enter your last name" />
+                        </p:column>
+                        <p:column>
+                            <p:message for="lastName" />
+                        </p:column>
+                    </p:row>
+
+                    <p:row>
+                        <p:column>
+                            <p:outputLabel for="email" value="Email: " style="font-weight: bold" />                            
+                        </p:column>
+                        <p:column>
+                            <p:inputText type="email" id="email" value="#{customerManagementManagedBean.customer.email}" required="true" requiredMessage="Please enter your email" />                              
+                        </p:column>
+                        <p:column>
+                            <p:message for="email" />
+                        </p:column>
+                    </p:row>
+
+                    <p:row>
+                        <p:column>
+                            <p:outputLabel for="password" value="Password: " style="font-weight: bold" />                            
+                        </p:column>
+                        <p:column>
+                            <p:password id="password" value="#{customerManagementManagedBean.customer.password}" required="true" requiredMessage="Please enter your password" />
+                        </p:column>
+                        <p:column>
+                            <p:message for="password" />
+                        </p:column>
+                    </p:row>
+
+                    <p:row>
+                        <p:column colspan="3">
+                            <p:commandButton type="reset" value="Clear" />&nbsp;
+                            <p:commandButton value="Register" actionListener="#{customerManagementManagedBean.registerNewCustomer}" update="@form" oncomplete="PF('dialogRegisterCustomer').show();"/>&nbsp;
+                        </p:column>
+                    </p:row>
+
+                </p:panelGrid>
+
+            </p:dialog>
+        </h:form>
+
+    </ui:define>
+
+</ui:composition>
